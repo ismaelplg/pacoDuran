@@ -11,6 +11,10 @@ export const routes: Routes = [
           import('./modules/splash-page/splash-page.component'),
       },
       {
+        path: 'home',
+        loadComponent: () => import('./modules/home-page/home-page.component'),
+      },
+      {
         path: '**',
         redirectTo: 'splash',
       },
