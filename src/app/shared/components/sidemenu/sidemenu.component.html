@@ -1,0 +1,22 @@
+@if (this.sidePanelService.sidePanel()) {
+  <!-- Overlay de fondo -->
+  <div
+    class="fixed bg-black/50 top-0 left-0 w-full h-screen z-20"
+    (click)="this.sidePanelService.toggleSidePanel()"
+    [@fadeInOutAnimation]
+  ></div>
+
+  <!-- Panel lateral -->
+  <div
+    class="fixed top-0 left-0 w-[80%] h-screen bg-neutral-900 z-30 shadow-lg"
+    [@slideInAnimation]
+  >
+    <div class="flex items-center justify-between p-2 pr-4">
+      <img src="/images/pd-white-logo.png" class="h-10" alt="" />
+      <i
+        class="fa-solid fa-xmark text-white"
+        (click)="this.sidePanelService.toggleSidePanel()"
+      ></i>
+    </div>
+  </div>
+}

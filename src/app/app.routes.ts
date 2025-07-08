@@ -7,12 +7,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'splash',
-        loadComponent: () =>
-          import('./modules/splash-page/splash-page.component'),
-      },
-      {
-        path: 'home',
-        loadComponent: () => import('./modules/home-page/home-page.component'),
+        loadComponent: () => import('./modules/home/home.component'),
       },
       {
         path: '**',

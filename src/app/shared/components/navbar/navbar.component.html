@@ -1,0 +1,27 @@
+<div class="absolute top-0 w-full z-10 pl-2 pr-4 py-2 lg:py-4">
+  <!-- MOBILE & TABLET NAVBAR-->
+  <div class="flex items-center justify-between lg:hidden">
+    <img src="/images/pd-white-logo.png" class="h-10" alt="" />
+    <div (click)="this.sidePanelService.toggleSidePanel()">
+      @if (!this.sidePanelService.sidePanel()) {
+        <i class="fa-solid fa-bars text-white"></i>
+      }
+    </div>
+  </div>
+  <!-- DESKTOP NAVBAR-->
+  <div class="hidden lg:block">
+    <ul
+      class="flex items-center justify-center gap-12 text-white uppercase text-sm font-bold"
+    >
+      <li class="border-b-2 border-white">
+        <a href="">Acerca de Mi</a>
+      </li>
+      <li>
+        <a href="">Discografia</a>
+      </li>
+      <li>
+        <a href="">Contacto</a>
+      </li>
+    </ul>
+  </div>
+</div>
