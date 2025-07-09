@@ -6,12 +6,29 @@ export const routes: Routes = [
     loadComponent: () => import('./layout/layout.component'),
     children: [
       {
-        path: 'splash',
+        path: 'home',
+        title: 'home',
         loadComponent: () => import('./modules/home/home.component'),
       },
       {
+        path: 'about',
+        title: 'About',
+        loadComponent: () => import('./modules/about/about.component'),
+      },
+      {
+        path: 'discography',
+        title: 'Discography',
+        loadComponent: () =>
+          import('./modules/discography/discography.component'),
+      },
+      {
+        path: 'contact',
+        title: 'Contact',
+        loadComponent: () => import('./modules/contact/contact.component'),
+      },
+      {
         path: '**',
-        redirectTo: 'splash',
+        redirectTo: '',
       },
     ],
   },

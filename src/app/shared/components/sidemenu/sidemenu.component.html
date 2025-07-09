@@ -8,15 +8,30 @@
 
   <!-- Panel lateral -->
   <div
-    class="fixed top-0 left-0 w-[80%] h-screen bg-neutral-900 z-30 shadow-lg"
-    [@slideInAnimation]
+    class="fixed top-0 left-0 w-full h-fit bg-neutral-900/70 z-30 shadow-lg rounded-b-xl"
+    [@slideInAnimation2]
   >
     <div class="flex items-center justify-between p-2 pr-4">
-      <img src="/images/pd-white-logo.png" class="h-10" alt="" />
+      <a routerLink="/home" (click)="this.sidePanelService.toggleSidePanel()">
+        <img src="/images/pd-white-logo.png" class="h-10" alt="" />
+      </a>
+
       <i
         class="fa-solid fa-xmark text-white"
         (click)="this.sidePanelService.toggleSidePanel()"
       ></i>
+    </div>
+    <div class="text-white flex flex-col items-center p-4">
+      @for (item of menuItems; track $index) {
+        <a
+          class="px-16 py-2 mr-2 uppercase text-sm rounded-md"
+          [routerLink]="item.path"
+          routerLinkActive="bg-neutral-900"
+          [routerLinkActiveOptions]="{ exact: true }"
+          (click)="this.sidePanelService.toggleSidePanel()"
+          >{{ item.title }}
+        </a>
+      }
     </div>
   </div>
 }

@@ -13,6 +13,19 @@ export const slideInAnimation = [
   ]),
 ];
 
+export const slideInAnimation2 = [
+  trigger('slideInAnimation2', [
+    transition(':enter', [
+      style({ transform: 'translateY(-100%)' }),
+      animate('.3s ease-in-out', style({ transform: 'translateY(0)' })),
+    ]),
+    transition(':leave', [
+      style({ transform: 'translateY(0)' }),
+      animate('.3s ease-in-out', style({ transform: 'translateY(-100%)' })),
+    ]),
+  ]),
+];
+
 export const fadeInOutAnimation = [
   trigger('fadeInOutAnimation', [
     transition(':enter', [

@@ -1,27 +1,38 @@
-<div class="absolute top-0 w-full z-10 pl-2 pr-4 py-2 lg:py-4">
+<div class="absolute top-0 w-full z-10">
   <!-- MOBILE & TABLET NAVBAR-->
-  <div class="flex items-center justify-between lg:hidden">
-    <img src="/images/pd-white-logo.png" class="h-10" alt="" />
-    <div (click)="this.sidePanelService.toggleSidePanel()">
+  <div class="flex items-center justify-between pl-2 py-2 lg:hidden">
+    @if (!this.sidePanelService.sidePanel()) {
+      <a routerLink="/home" [@fadeInOutAnimation]>
+        <img src="/images/pd-white-logo.png" class="h-10" alt="" />
+      </a>
+    }
+
+    <div (click)="this.sidePanelService.toggleSidePanel()" class="px-4">
       @if (!this.sidePanelService.sidePanel()) {
-        <i class="fa-solid fa-bars text-white"></i>
+        <i class="fa-solid fa-ellipsis-vertical text-white text-xl"></i>
       }
     </div>
   </div>
   <!-- DESKTOP NAVBAR-->
-  <div class="hidden lg:block">
+  <div class="hidden lg:py-4 lg:flex items-center justify-between px-4">
+    <a routerLink="/home" [@fadeInOutAnimation]>
+      <img src="/images/pd-white-logo.png" class="h-10" alt="" />
+    </a>
+
     <ul
       class="flex items-center justify-center gap-12 text-white uppercase text-sm font-bold"
     >
-      <li class="border-b-2 border-white">
-        <a href="">Acerca de Mi</a>
-      </li>
-      <li>
-        <a href="">Discografia</a>
-      </li>
-      <li>
-        <a href="">Contacto</a>
-      </li>
+      @for (item of menuItems; track $index) {
+        <a
+          class="px-4 py-2 uppercase text-sm border-b-2 border-transparent"
+          [routerLink]="item.path"
+          routerLinkActive="!border-white"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >{{ item.title }}
+        </a>
+      }
     </ul>
+
+    <div></div>
   </div>
 </div>
