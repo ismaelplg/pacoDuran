@@ -1,18 +1,22 @@
-<div class="bg-white">
+<div class="bg-white my-2">
   <!--LOGO -->
   <div class="flex flex-col items-center justify-center gap-2 mt-8">
-    <img src="images/paco-duran-black-logo.png" alt="pd-black-logo" class="w-[250px]" />
+    <a [routerLink]="['/']">
+      <img src="images/paco-duran-black-logo.png" alt="pd-black-logo" class="w-[250px]" />
+    </a>
+
     <h1 class="text-sm">Mixer Engineer & Producer</h1>
   </div>
 
   <!--CONTACT / SOCIALS -->
   <div class="flex items-center justify-center mt-5 gap-4">
-    <div
+    <a
+      [routerLink]="['/contact']"
       class="flex items-center justify-between gap-2 border border-neutral-950 px-3 py-1 rounded-md"
     >
       <h1 class="text-sm">Contact</h1>
       <i class="fa-regular fa-envelope"></i>
-    </div>
+    </a>
     <a
       href="https://www.instagram.com/pacoduran.mix"
       target="_blank"
@@ -29,5 +33,5 @@
     </a>
   </div>
 
-  <shared-portfolio />
+  <router-outlet />
 </div>

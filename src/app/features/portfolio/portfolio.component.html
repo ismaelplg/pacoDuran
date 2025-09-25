@@ -1,0 +1,54 @@
+<div class="p-4">
+  <!-- TITLE -->
+  <div class="flex gap-2 items-center">
+    <div class="h-px bg-black w-full"></div>
+    <h1>Portfolio</h1>
+    <div class="h-px bg-black w-full"></div>
+  </div>
+
+  <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 my-4 gap-4 items-center w-fit">
+    @for (item of portfolio(); track $index) {
+      <div
+        class="flex items-center justify-center relative group"
+        (click)="onItemClick($index)"
+        [class.active]="selectedIndex === $index"
+        tabindex="0"
+      >
+        <img
+          [src]="item.src"
+          class="transition-all duration-300 group-hover:opacity-50 md:group-hover:opacity-50"
+          [class.opacity-50]="selectedIndex === $index"
+          [alt]="`${item.artist}`"
+        />
+        <div
+          class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+          [class.opacity-100]="selectedIndex === $index"
+        >
+          <div class="bg-black/80 px-2 py-1 size-full flex text-center flex-col justify-center">
+            <h1 class="text-[10px] md:text-[14px] xl:text-[16px] font-medium text-white">
+              {{ item.artist }}
+            </h1>
+            <h2 class="text-[6px] md:text-[10px] xl:text-[12px] font-medium text-zinc-200 mt-1">
+              {{ item.songAlbum }}
+            </h2>
+            <h3 class="text-[8px] md:text-[12px] xl:text-[14px] font-medium text-zinc-400 mt-2">
+              {{ item.job }}
+            </h3>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+  <!-- BACK TO TOP -->
+  <div class="flex gap-2 items-center justify-center mt-7 mb-2">
+    <div class="h-px bg-black/25 w-full"></div>
+    <button
+      class="text-black/75 text-xs w-fit whitespace-nowrap hover:outline hover:outline-black/25 rounded px-2 py-1"
+      (click)="scrollToTop()"
+      aria-label="Volver al inicio"
+    >
+      <h1>Back to top ↑</h1>
+    </button>
+    <div class="h-px bg-black/25 w-full hidden md:block"></div>
+  </div>
+</div>
