@@ -47,11 +47,12 @@
   <div class="flex gap-2 items-center justify-center mt-7 mb-2">
     <div class="h-px bg-black/25 w-full"></div>
     <button
-      class="text-black/75 text-xs w-fit whitespace-nowrap hover:outline hover:outline-black/25 rounded px-2 py-1"
+      class="text-black/75 text-xs w-fit flex items-center gap-2 whitespace-nowrap hover:outline hover:outline-black/25 rounded px-2 py-1"
       (click)="scrollToTop()"
       aria-label="Volver al inicio"
     >
-      <h1>Back to top ↑</h1>
+      <h1>Back to top</h1>
+      <i class="fa-solid fa-arrow-up"></i>
     </button>
     <div class="h-px bg-black/25 w-full hidden md:block"></div>
   </div>
