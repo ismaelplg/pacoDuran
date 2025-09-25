@@ -1,9 +1,9 @@
 <div class="p-4">
   <!-- TITLE -->
   <div class="flex gap-2 items-center">
-    <div class="h-px bg-black w-full"></div>
-    <h1>Contact</h1>
-    <div class="h-px bg-black w-full"></div>
+    <div class="h-px bg-black/25 w-full"></div>
+    <h1 class="text-black/75 text-sm">Contact</h1>
+    <div class="h-px bg-black/25 w-full"></div>
   </div>
   <!-- CONTACT INFO -->
   <div class="flex flex-col items-center my-4">
@@ -140,5 +140,20 @@
         }
       </button>
     </form>
+  </div>
+
+  <!-- BACK TO TOP -->
+  <div class="flex gap-2 items-center justify-center mt-7 mb-2">
+    <div class="h-px bg-black/25 w-full"></div>
+    <button
+      class="text-black/75 text-xs w-fit whitespace-nowrap hover:outline hover:outline-black/25 rounded px-2 py-1"
+      aria-label="Volver al inicio"
+    >
+      <a class="flex items-center gap-2" [routerLink]="['/']">
+        <i class="fa-solid fa-house"></i>
+        <h1>Back to home</h1>
+      </a>
+    </button>
+    <div class="h-px bg-black/25 w-full hidden md:block"></div>
   </div>
 </div>

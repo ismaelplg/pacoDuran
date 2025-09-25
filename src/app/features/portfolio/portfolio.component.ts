@@ -8,6 +8,8 @@ import { NgOptimizedImage } from '@angular/common';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class PortfolioComponent {
+  isLoaded = signal<boolean>(false);
+
   portfolio = signal([
     {
       src: 'portfolio/1.png',

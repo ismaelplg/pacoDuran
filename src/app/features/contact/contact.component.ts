@@ -5,11 +5,11 @@ import { JsonPipe } from '@angular/common';
 import { FormUtils } from '../../../shared/utils/form.utils';
 import { EmailService } from '../../../shared/services/email.service';
 import { Contact } from '../../../shared/interfaces/contact.interface';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './contact.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
