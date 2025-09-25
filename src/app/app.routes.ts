@@ -4,10 +4,20 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./features/home/home.component'),
-  },
-  {
-    path: 'contact',
-    loadComponent: () => import('./features/contact/contact.component'),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./features/portfolio/portfolio.component'),
+      },
+      {
+        path: 'contact',
+        loadComponent: () => import('./features/contact/contact.component'),
+      },
+      {
+        path: '**',
+        redirectTo: '',
+      },
+    ],
   },
   {
     path: '**',
