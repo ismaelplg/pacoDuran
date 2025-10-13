@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, HostListener, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  signal,
+} from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 
 @Component({
@@ -9,6 +14,11 @@ import { NgOptimizedImage } from '@angular/common';
 })
 export default class PortfolioComponent {
   isLoaded = signal<boolean>(false);
+  loadedImages = new Set<number>();
+
+  onImageLoad(index: number) {
+    this.loadedImages.add(index);
+  }
 
   portfolio = signal([
     {

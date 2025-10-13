@@ -1,4 +1,4 @@
-import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from '@angular/forms';
+import { FormGroup, ValidationErrors } from '@angular/forms';
 
 export class FormUtils {
   // Expresiones regulares/
@@ -26,7 +26,9 @@ export class FormUtils {
   }
 
   static isValidField(form: FormGroup, fieldName: string): boolean | null {
-    return !!form.controls[fieldName].errors && form.controls[fieldName].touched;
+    return (
+      !!form.controls[fieldName].errors && form.controls[fieldName].touched
+    );
   }
 
   static getFieldError(form: FormGroup, fieldName: string): string | null {

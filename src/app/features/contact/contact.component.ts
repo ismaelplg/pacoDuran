@@ -1,15 +1,25 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 
-import { JsonPipe } from '@angular/common';
 import { FormUtils } from '../../../shared/utils/form.utils';
 import { EmailService } from '../../../shared/services/email.service';
-import { Contact } from '../../../shared/interfaces/contact.interface';
+
 import { Router, RouterLink } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink, NgOptimizedImage],
   templateUrl: './contact.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -17,6 +27,8 @@ export default class ContactComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private emailService = inject(EmailService);
+
+  mainImageLoaded = signal<boolean>(false);
 
   status = signal<'idle' | 'loading' | 'success' | 'error'>('idle');
   errorMessage = signal<string>('');
@@ -28,6 +40,11 @@ export default class ContactComponent {
   });
 
   formUtils: typeof FormUtils = FormUtils;
+
+  onMainImageLoad() {
+    this.mainImageLoaded.set(true);
+    console.log('image loaded');
+  }
 
   onSubmit() {
     if (this.contactForm.invalid) {
