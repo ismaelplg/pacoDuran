@@ -1,29 +1,35 @@
 <div class="p-4">
   <!-- TITLE -->
-  <div class="flex gap-2 items-center">
-    <div class="h-px bg-black/25 w-full"></div>
-    <h1 class="text-black/75 text-sm">Contact</h1>
-    <div class="h-px bg-black/25 w-full"></div>
+  <div class="flex items-center gap-2">
+    <div class="h-px w-full bg-black/25"></div>
+    <h1 class="text-sm text-black/75">Contact</h1>
+    <div class="h-px w-full bg-black/25"></div>
   </div>
   <!-- CONTACT INFO -->
-  <div class="flex flex-col items-center my-4">
+  <div class="my-4 flex flex-col items-center">
     <!-- OPTIONAL -->
     <div
-      class="flex items-center justify-center gap-4 px-4 md:w-[500px] lg:w-[400px] xl:w-[600px] selection:bg-zinc-900 selection:text-white"
+      class="flex items-center justify-center gap-4 px-4 selection:bg-zinc-900 selection:text-white md:w-[500px] lg:w-[400px] xl:w-[600px]"
     >
-      <img
-        src="images/pd-alternative.jpg"
-        alt="pd-aternative"
-        class="w-[100px] md:w-[200px]"
-        loading="lazy"
-      />
+      <div class="relative aspect-[715/954]">
+        @if (!mainImageLoaded()) {
+          <div class="absolute inset-0 animate-pulse bg-zinc-400"></div>
+        }
 
-      <h1 class="text-xs font-light text-gray-900 mb-4 xl:text-lg">
+        <img
+          src="images/pd-alternative.png"
+          alt="pd-alternative"
+          class=""
+          (load)="onMainImageLoad()"
+        />
+      </div>
+
+      <h1 class="mb-4 text-xs font-light text-gray-900 xl:text-lg">
         I'm Paco, a music producer and mixing engineer based in
         <span class="font-bold italic">Mexico</span>. Working both
         <span class="font-bold italic">independently</span> and with a
-        <span class="font-bold italic">label in Miami, Florida</span>, I help artists achieve the
-        sound their music deserves through
+        <span class="font-bold italic">label in Miami, Florida</span>, I help
+        artists achieve the sound their music deserves through
         <span class="font-bold italic">dedication, precision, and heart</span>.
       </h1>
     </div>
@@ -36,7 +42,7 @@
       <!-- NAME -->
       <div class="flex flex-col">
         <div
-          class="border border-zinc-200 rounded px-2 py-1 flex items-center gap-2 focus-within:outline-2 focus-within:outline-zinc-500"
+          class="flex items-center gap-2 rounded border border-zinc-200 px-2 py-1 focus-within:outline-2 focus-within:outline-zinc-500"
         >
           <i class="fa-solid fa-user text-zinc-300"></i>
           <input
@@ -44,13 +50,13 @@
             id="name"
             formControlName="name"
             placeholder="Name"
-            class="placeholder:text-zinc-300 focus:outline-none text-zinc-500"
+            class="text-zinc-500 placeholder:text-zinc-300 focus:outline-none"
           />
         </div>
-        <div class="h-4 mb-1 flex items-center px-1">
-          @if (formUtils.isValidField(contactForm, 'name')) {
+        <div class="mb-1 flex h-4 items-center px-1">
+          @if (formUtils.isValidField(contactForm, "name")) {
             <span class="text-[10px] text-red-500">
-              {{ formUtils.getFieldError(contactForm, 'name') }}</span
+              {{ formUtils.getFieldError(contactForm, "name") }}</span
             >
           }
         </div>
@@ -58,20 +64,20 @@
       <!-- EMAIL -->
       <div class="flex flex-col">
         <div
-          class="border border-zinc-200 rounded px-2 py-1 flex items-center gap-2 w-full focus-within:outline-2 focus-within:outline-zinc-500"
+          class="flex w-full items-center gap-2 rounded border border-zinc-200 px-2 py-1 focus-within:outline-2 focus-within:outline-zinc-500"
         >
           <i class="fa-solid fa-envelope text-zinc-300"></i>
           <input
             type="text"
             formControlName="email"
             placeholder="Email"
-            class="placeholder:text-zinc-300 focus:outline-none text-zinc-500"
+            class="text-zinc-500 placeholder:text-zinc-300 focus:outline-none"
           />
         </div>
-        <div class="h-4 mb-1 flex items-center px-1">
-          @if (formUtils.isValidField(contactForm, 'email')) {
+        <div class="mb-1 flex h-4 items-center px-1">
+          @if (formUtils.isValidField(contactForm, "email")) {
             <span class="text-[10px] text-red-500">
-              {{ formUtils.getFieldError(contactForm, 'email') }}</span
+              {{ formUtils.getFieldError(contactForm, "email") }}</span
             >
           }
         </div>
@@ -79,35 +85,43 @@
       <!-- MESSAGE -->
       <div class="flex flex-col">
         <div
-          class="border border-zinc-200 rounded px-2 py-1 flex items-baseline gap-2 w-full focus-within:outline-2 focus-within:outline-zinc-500"
+          class="flex w-full items-baseline gap-2 rounded border border-zinc-200 px-2 py-1 focus-within:outline-2 focus-within:outline-zinc-500"
         >
           <i class="fa-solid fa-message text-zinc-300"></i>
           <textarea
             formControlName="message"
             placeholder="Message"
-            class="placeholder:text-zinc-300 focus:outline-none text-zinc-500 resize-none"
+            class="resize-none text-zinc-500 placeholder:text-zinc-300 focus:outline-none"
           ></textarea>
         </div>
-        <div class="h-4 mb-1 flex items-center px-1">
-          @if (formUtils.isValidField(contactForm, 'message')) {
+        <div class="mb-1 flex h-4 items-center px-1">
+          @if (formUtils.isValidField(contactForm, "message")) {
             <span class="text-[10px] text-red-500">
-              {{ formUtils.getFieldError(contactForm, 'message') }}</span
+              {{ formUtils.getFieldError(contactForm, "message") }}</span
             >
           }
         </div>
       </div>
       <button
         type="submit"
-        class="transition-all duration-300 mt-2 flex w-full items-center justify-center gap-2 text-white rounded py-1.5 border"
+        class="mt-2 flex w-full items-center justify-center gap-2 rounded border py-1.5 text-white transition-all duration-300"
         [style.backgroundColor]="
-          status() === 'success' ? '#16a34a' : status() === 'error' ? '#dc2626' : '#18181b'
+          status() === 'success'
+            ? '#16a34a'
+            : status() === 'error'
+              ? '#dc2626'
+              : '#18181b'
         "
         [style.borderColor]="
-          status() === 'success' ? '#16a34a' : status() === 'error' ? '#dc2626' : '#18181b'
+          status() === 'success'
+            ? '#16a34a'
+            : status() === 'error'
+              ? '#dc2626'
+              : '#18181b'
         "
       >
         @switch (status()) {
-          @case ('loading') {
+          @case ("loading") {
             <svg
               class="h-5 w-5 animate-spin"
               xmlns="http://www.w3.org/2000/svg"
@@ -130,11 +144,11 @@
             </svg>
             <span>Cargando...</span>
           }
-          @case ('success') {
+          @case ("success") {
             <i class="fa-solid fa-check"></i>
             <span>Enviado</span>
           }
-          @case ('error') {
+          @case ("error") {
             <i class="fa-solid fa-xmark"></i>
             <span>{{ errorMessage() }}</span>
           }
@@ -148,10 +162,10 @@
   </div>
 
   <!-- BACK TO TOP -->
-  <div class="flex gap-2 items-center justify-center mt-7 mb-2">
-    <div class="h-px bg-black/25 w-full"></div>
+  <div class="mt-7 mb-2 flex items-center justify-center gap-2">
+    <div class="h-px w-full bg-black/25"></div>
     <button
-      class="text-black/75 text-xs w-fit whitespace-nowrap hover:outline hover:outline-black/25 rounded px-2 py-1"
+      class="w-fit rounded px-2 py-1 text-xs whitespace-nowrap text-black/75 hover:outline hover:outline-black/25"
       aria-label="Volver al inicio"
     >
       <a class="flex items-center gap-2" [routerLink]="['/']">
@@ -159,6 +173,6 @@
         <h1>Back to home</h1>
       </a>
     </button>
-    <div class="h-px bg-black/25 w-full hidden md:block"></div>
+    <div class="hidden h-px w-full bg-black/25 md:block"></div>
   </div>
 </div>
